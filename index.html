@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<canvas id="myCanvas" width="1024px" height="680px" style="border:1px solid #d3d3d3;">
+<body>
+<script>
+      let   Rectangle  = function (x ,y,weight,height ) {
+        this.x = x;
+        this.y = y;
+        this.weight = weight;
+        this.height =height;
+        this.getX = function () {
+            return this.x;
+        }
+        this.getY = function () {
+            return this.y;
+        }
+        this.getWeight = function () {
+            return this.weight;
+        }
+        this.Height =function () {
+            return this.height;
+        }
+    };
+      function getRandomHex(){
+          return Math.floor(Math.random()*255);
+      }
+
+      function getRandomColor() {
+          var red = getRandomHex();
+          var green = getRandomHex();
+          var blue = getRandomHex();
+          return "rgb(" + red + "," + blue + "," + green + ")";
+      }
+    function Srectangle() {
+        var ctx = document.getElementById("myCanvas").getContext("2d");
+        var weight = Math.floor(Math.random() * 200);
+        var height = Math.floor(Math.random() * 300);
+        var color = getRandomColor();
+        var x = Math.random() * (window.innerWidth);
+        var y = Math.random() * (window.innerHeight);
+        var rectangle = new Rectangle(x ,y,weight,height);
+        ctx.beginPath();
+        ctx.fillRect(rectangle.x,rectangle.y,rectangle.weight,rectangle.height);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke();
+    }
+
+       function createMultipleCircle(){
+          for(var i = 0; i < 5; i++){
+              Srectangle();
+          }
+      }
+      createMultipleCircle();
+</script>
+</body>
+</html>
