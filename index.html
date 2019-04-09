@@ -12,19 +12,8 @@
         this.y = y;
         this.weight = weight;
         this.height =height;
-        this.getX = function () {
-            return this.x;
-        }
-        this.getY = function () {
-            return this.y;
-        }
-        this.getWeight = function () {
-            return this.weight;
-        }
-        this.Height =function () {
-            return this.height;
-        }
     };
+
       function getRandomHex(){
           return Math.floor(Math.random()*255);
       }
@@ -35,27 +24,27 @@
           var blue = getRandomHex();
           return "rgb(" + red + "," + blue + "," + green + ")";
       }
+
     function Srectangle() {
         var ctx = document.getElementById("myCanvas").getContext("2d");
-        var weight = Math.floor(Math.random() * 200);
-        var height = Math.floor(Math.random() * 300);
+        var weight = parseInt(prompt('nhap gia tri'));
+        var height =parseInt(prompt('nhap gia tri'));
+        let s  = weight * height;
+        let c = (weight + height) / 2;
         var color = getRandomColor();
         var x = Math.random() * (window.innerWidth);
         var y = Math.random() * (window.innerHeight);
         var rectangle = new Rectangle(x ,y,weight,height);
         ctx.beginPath();
-        ctx.fillRect(rectangle.x,rectangle.y,rectangle.weight,rectangle.height);
         ctx.fillStyle = color;
+        ctx.fillRect(rectangle.x,rectangle.y,rectangle.weight,rectangle.height);
         ctx.fill();
         ctx.stroke();
+        alert("diện tích hình chữ nhật  là " + s);
+        alert("chu vi hình chữ nhật là " + c);
     }
+Srectangle();
 
-       function createMultipleCircle(){
-          for(var i = 0; i < 5; i++){
-              Srectangle();
-          }
-      }
-      createMultipleCircle();
 </script>
 </body>
 </html>
